@@ -42,14 +42,14 @@ checksum = "7fe5bd57d1d7414c6b5ed48563a2c855d995ff777729dcd91c369ec7fea395ae"
 [[package]]
 name = "ripioc"
 version = "0.1.0"
-source = "git+ssh://git@github.com/oliverdaff/ripioc.git#83be4ed4a740127e9fe85c117714b6b746c4e1e2"
+source = "git+ssh://git@github.com/oliverdaff/ripioc.git#8cc750fa0c051565edac6c3ba6e1a87ceb43c7d6"
 dependencies = [
  "lazy_static",
  "regex",
 ]
 
 [[package]]
-name = "ripioccli"
+name = "ripioc_cli"
 version = "0.1.0"
 dependencies = [
  "ripioc",
