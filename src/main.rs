@@ -1,10 +1,13 @@
 extern crate clap;
 extern crate ripioc;
 
+mod output;
+
 use clap::{App, Arg, ArgGroup};
-use ripioc::network_ioc::parse_network_iocs;
+use ripioc::parse_all_iocs;
 use std::fs;
 use std::io::{self, Read};
+use crate::output::json;
 
 // [--input INPUT] default: stdin
 // [--output OUTPUT] default: stdout
@@ -14,18 +17,18 @@ fn main() {
         .about("Parser for IOC from input text")
         .arg(
             Arg::with_name("stdin")
-                .short('c')
+                .short("c")
                 .long("stdin")
                 .value_name("STDIN")
-                .about("Read input from stdin")
+                .help("Read input from stdin")
                 .takes_value(false),
         )
         .arg(
             Arg::with_name("input_file")
-                .short('i')
+                .short("i")
                 .long("input_file")
                 .value_name("INPUT_FILE")
-                .about("Read input from file")
+                .help("Read input from file")
                 .takes_value(true),
         )
         .group(
@@ -46,8 +49,8 @@ fn main() {
 
     match read_input_result {
         Ok(_) => {
-            let iocs = parse_network_iocs(&input);
-            println!("{:?}", iocs);
+            let iocs = parse_all_iocs(&input);
+            println!("{}", json::output_json(&iocs));
         }
         Err(e) => println!("Error reading input {}", e),
     }
