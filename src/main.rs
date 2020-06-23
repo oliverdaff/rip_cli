@@ -3,11 +3,11 @@ extern crate ripioc;
 
 mod output;
 
+use crate::output::json;
 use clap::{App, Arg, ArgGroup};
 use ripioc::parse_all_iocs;
 use std::fs;
 use std::io::{self, Read};
-use crate::output::json;
 
 // [--input INPUT] default: stdin
 // [--output OUTPUT] default: stdout
