@@ -37,14 +37,13 @@ fn main() -> io::Result<()> {
 
     let mut input = String::new();
 
-    let read_input_result = if result.is_present("input_file") {
-        let input_file = result.value_of("input_file").unwrap();
-        fs::File::open(&input_file).and_then(|mut f| f.read_to_string(&mut input))
-    } else {
-        io::stdin().read_to_string(&mut input)
-    };
-
-    let iocs = read_input_result.map(|_| parse_all_iocs(&input))?;
+    let iocs = match result.value_of("input_file") {
+        Some(input_file) => {
+            fs::File::open(&input_file).and_then(|mut f| f.read_to_string(&mut input))
+        }
+        None => io::stdin().read_to_string(&mut input),
+    }
+    .map(|_| parse_all_iocs(&input))?;
 
     match result.value_of("output_file") {
         Some(out_file) => fs::write(out_file, json::output_json(&iocs)),
