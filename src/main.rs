@@ -7,7 +7,7 @@ use crate::output::json;
 use clap::{App, Arg};
 use ripioc::parse_all_iocs;
 use std::fs;
-use std::io::{self, Read};
+use std::io::{self, Read, Write};
 
 // [--input INPUT] default: stdin
 // [--output OUTPUT] default: stdout
@@ -47,9 +47,6 @@ fn main() -> io::Result<()> {
 
     match result.value_of("output_file") {
         Some(out_file) => fs::write(out_file, json::output_json(&iocs)),
-        None => {
-            println!("{:?}", json::output_json(&iocs));
-            Ok(())
-        }
+        None => io::stdout().write_all(json::output_json(&iocs).as_bytes()),
     }
 }
