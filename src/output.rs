@@ -8,7 +8,6 @@ pub mod json {
     use ripioc::network_ioc::NetworkIOC;
     use ripioc::IOCS;
 
-
     use serde_json::json;
     use serde_json::to_string;
 
