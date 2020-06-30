@@ -47,6 +47,8 @@ fn main() -> io::Result<()> {
 
     match result.value_of("output_file") {
         Some(out_file) => fs::write(out_file, json::output_json(&iocs)),
-        None => io::stdout().write_all(json::output_json(&iocs).as_bytes()),
+        None => { 
+            io::stdout().write_all(json::output_non_serde_json(&iocs).as_bytes())
+        },
     }
 }

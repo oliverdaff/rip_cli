@@ -12,5 +12,5 @@ serde_json = { version = "1.0"}
 
 [dependencies.ripioc]
 git = "ssh://git@github.com/oliverdaff/ripioc.git"
-rev = "213993c"
+rev = "37c454b"
 features = ["serde_support"]
