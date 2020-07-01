@@ -1,4 +1,4 @@
-# RIP CLI
+# RIP CLI (rioc) [![CircleCI](https://circleci.com/gh/oliverdaff/rip_cli.svg?style=shield)](https://circleci.com/gh/oliverdaff/rip_cli)
 
 A simple Rust cli program that uses the RIP IOC to match 
 [indicators of compromise](https://taosecurity.blogspot.com/2018/11/the-origin-of-term-indicators-of.html "origin of term indicator") (IOC) found in text data.
