@@ -8,7 +8,7 @@ Text content often contains indicators of compromise.  Sources include Twitter, 
 
 ## Usage
 
-```
+```bash
 rip_ioc --help
 
 CLI for rip IOC 0.1
@@ -29,7 +29,7 @@ OPTIONS:
 
 ### Examples
 
-```
+```bash
 echo "this has a baddomain.com" |   ripioc_cli # Read from stdin and write to sdout
 
 echo "this has a baddomain.com" |   ipioc_cli -o /tmp/iocs.txt # Read from stdin and write to a file
@@ -41,7 +41,7 @@ ripioc_cli -o /tmp/iocs.txt -i /tmp/inputtext # Read from stdin and write to a f
 ## Installation
 While this library is in initial state of development installation is done using cargo.
 
-```
+```bash
 git checkout https://github.com/oliverdaff/rip_cli
 cargo test 
 cargo install --path .
