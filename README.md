@@ -9,7 +9,33 @@ Text content often contains indicators of compromise.  Sources include Twitter, 
 ## Usage
 
 ```
-TODO: Add example bash cmd
+rip_ioc --help
+
+CLI for rip IOC 0.1
+Parser for IOC from input text
+
+USAGE:
+    ripioc_cli [FLAGS] [OPTIONS]
+
+FLAGS:
+    -h, --help          Prints help information
+        --serde_json    Output using serde_json JSON format
+    -V, --version       Prints version information
+
+OPTIONS:
+    -i, --input_file <INPUT_FILE>      Read input from file
+    -o, --output_file <OUTPUT_FILE>    Write output to file
+```
+
+### Examples
+
+```
+echo "this has a baddomain.com" |   ripioc_cli # Read from stdin and write to sdout
+
+echo "this has a baddomain.com" |   ipioc_cli -o /tmp/iocs.txt # Read from stdin and write to a file
+
+ripioc_cli -o /tmp/iocs.txt -i /tmp/inputtext # Read from stdin and write to a file
+
 ```
 
 ## Installation
@@ -18,7 +44,7 @@ While this library is in initial state of development installation is done using
 ```
 git checkout https://github.com/oliverdaff/rip_cli
 cargo test 
-cargo install
+cargo install --path .
 ```
 
 ## License
