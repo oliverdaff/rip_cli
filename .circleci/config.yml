@@ -109,7 +109,3 @@ workflows:
           filters:
             tags:
               only: /.*/
-      - coverage:
-          filters:
-            tags:
-              only: /.*/
