@@ -38,6 +38,42 @@ ripioc_cli -o /tmp/iocs.txt -i /tmp/inputtext # Read from stdin and write to a f
 
 ```
 
+### JSON Output
+
+The default JSON output (rather than with the `--serde_json` flag) is shown below.
+
+```json
+{
+            "network": {
+                "url" :    [],
+                "domain" : [], 
+                "email" :  [],
+                "ipv4" :   [],
+                "ipv6" :   [],
+                "hexurl" : [],
+            },
+            "hash":{
+                "md5" :     [], 
+                "sha1" :    [],
+                "sha256" :  [],
+                "sha512" :  [],
+                "ssdeep" :  [],
+            },
+            "file" : {
+                "doc" :   [],
+                "exe" :   [],
+                "flash" : [],
+                "img" :   [],
+                "mac" :   [],
+                "web" :   [],
+                "zip" :   [],
+            },
+            "vulns": {
+                "cve" : []
+            }
+        }
+```
+
 ## Installation
 While this library is in initial state of development installation is done using cargo.
 

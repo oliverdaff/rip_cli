@@ -1,3 +1,16 @@
+//! A cli interface to the ripioc library.
+//! rip_ioc will read text from the command line
+//! or from a file and output the IOCs identified
+//! in the text as JSON.
+//! 
+//! ## Example Usage
+//! ```bash
+//! echo "this has a baddomain.com" |   ripioc_cli # Read from stdin and write to sdout
+//! 
+//! echo "this has a baddomain.com" |   ipioc_cli -o /tmp/iocs.txt # Read from stdin and write to a file
+//! 
+//! ripioc_cli -o /tmp/iocs.txt -i /tmp/inputtext # Read from stdin and write to a file
+//! ```
 extern crate clap;
 extern crate ripioc;
 
@@ -9,8 +22,6 @@ use ripioc::parse_all_iocs;
 use std::fs;
 use std::io::{self, Read, Write};
 
-// [--input INPUT] default: stdin
-// [--output OUTPUT] default: stdout
 fn main() -> io::Result<()> {
     let result = App::new("CLI for rip IOC")
         .version("0.1")

@@ -1,4 +1,4 @@
-//! Provides the format for IOCS into JSON.
+//! Provides the formatting for IOCS into JSON.
 //! The output can be based on serde_json if serialized form is to be
 //! read back in else use the custom format.
 pub mod json {
