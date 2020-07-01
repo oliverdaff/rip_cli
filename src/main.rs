@@ -5,11 +5,11 @@
 //! 
 //! ## Example Usage
 //! ```bash
-//! echo "this has a baddomain.com" |   ripioc_cli # Read from stdin and write to sdout
+//! echo "this has a baddomain.com" |   rioc # Read from stdin and write to sdout
 //! 
-//! echo "this has a baddomain.com" |   ipioc_cli -o /tmp/iocs.txt # Read from stdin and write to a file
+//! echo "this has a baddomain.com" |   rioc -o /tmp/iocs.txt # Read from stdin and write to a file
 //! 
-//! ripioc_cli -o /tmp/iocs.txt -i /tmp/inputtext # Read from stdin and write to a file
+//! rioc -o /tmp/iocs.txt -i /tmp/inputtext # Read from stdin and write to a file
 //! ```
 extern crate clap;
 extern crate ripioc;

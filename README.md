@@ -9,13 +9,12 @@ Text content often contains indicators of compromise.  Sources include Twitter, 
 ## Usage
 
 ```bash
-rip_ioc --help
-
+rioc -h
 CLI for rip IOC 0.1
 Parser for IOC from input text
 
 USAGE:
-    ripioc_cli [FLAGS] [OPTIONS]
+    rioc [FLAGS] [OPTIONS]
 
 FLAGS:
     -h, --help          Prints help information
@@ -30,11 +29,11 @@ OPTIONS:
 ### Examples
 
 ```bash
-echo "this has a baddomain.com" |   ripioc_cli # Read from stdin and write to sdout
+echo "this has a baddomain.com" |   rioc # Read from stdin and write to sdout
 
-echo "this has a baddomain.com" |   ipioc_cli -o /tmp/iocs.txt # Read from stdin and write to a file
+echo "this has a baddomain.com" |   rioc -o /tmp/iocs.txt # Read from stdin and write to a file
 
-ripioc_cli -o /tmp/iocs.txt -i /tmp/inputtext # Read from stdin and write to a file
+rioc -o /tmp/iocs.txt -i /tmp/inputtext # Read from stdin and write to a file
 
 ```
 
