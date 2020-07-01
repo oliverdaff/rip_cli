@@ -2,13 +2,13 @@
 //! rip_ioc will read text from the command line
 //! or from a file and output the IOCs identified
 //! in the text as JSON.
-//! 
+//!
 //! ## Example Usage
 //! ```bash
 //! echo "this has a baddomain.com" |   rioc # Read from stdin and write to sdout
-//! 
+//!
 //! echo "this has a baddomain.com" |   rioc -o /tmp/iocs.txt # Read from stdin and write to a file
-//! 
+//!
 //! rioc -o /tmp/iocs.txt -i /tmp/inputtext # Read from stdin and write to a file
 //! ```
 extern crate clap;
