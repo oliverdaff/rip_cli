@@ -33,6 +33,13 @@ fn main() -> io::Result<()> {
                 .takes_value(true)
                 .required(false),
         )
+        .arg(
+            Arg::with_name("serde_json")
+                .long("serde_json")
+                .help("Output using serde_json JSON format")
+                .takes_value(false)
+                .required(false),
+        )
         .get_matches();
 
     let mut input = String::new();
@@ -45,8 +52,14 @@ fn main() -> io::Result<()> {
     }
     .map(|_| parse_all_iocs(&input))?;
 
+    let output = if result.is_present("serde_json") {
+        json::output_json(&iocs)
+    } else {
+        json::output_non_serde_json(&iocs)
+    };
+
     match result.value_of("output_file") {
-        Some(out_file) => fs::write(out_file, json::output_json(&iocs)),
-        None => io::stdout().write_all(json::output_non_serde_json(&iocs).as_bytes()),
+        Some(out_file) => fs::write(out_file, output),
+        None => io::stdout().write_all(output.as_bytes()),
     }
 }
