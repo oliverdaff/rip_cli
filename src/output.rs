@@ -11,57 +11,68 @@ pub mod json {
     use serde_json::json;
     use serde_json::to_string;
 
-    pub fn output_json(input: &IOCS) -> String {
-        to_string(input).unwrap()
+    /// Output the IOCS as the default serde_json
+    /// format for the structs.
+    ///
+    /// # Arguments
+    ///
+    /// `iocs` - The IOCS to format
+    pub fn output_json(iocs: &IOCS) -> String {
+        to_string(iocs).unwrap()
     }
 
-    pub fn output_non_serde_json(input: &IOCS) -> String {
+    /// Output the IOCS as a simple JSON format.
+    ///
+    /// # Arguments
+    ///
+    /// `iocs` - The IOCS to format.
+    pub fn output_non_serde_json(iocs: &IOCS) -> String {
         json!({
             "network": {
-                "url" : input.network_iocs.urls
+                "url" : iocs.network_iocs.urls
                 .iter()
                 .map(|x|output_network_ioc(&x)).collect::<Vec<&str>>(),
-                "domain" : input.network_iocs.domains.iter()
+                "domain" : iocs.network_iocs.domains.iter()
                 .map(|x|output_network_ioc(&x)).collect::<Vec<&str>>(),
-                "email" : input.network_iocs.emails.iter()
+                "email" : iocs.network_iocs.emails.iter()
                 .map(|x|output_network_ioc(&x)).collect::<Vec<&str>>(),
-                "ipv4" : input.network_iocs.ipv4s.iter()
+                "ipv4" : iocs.network_iocs.ipv4s.iter()
                 .map(|x|output_network_ioc(&x)).collect::<Vec<&str>>(),
-                "ipv6" : input.network_iocs.ipv6s.iter()
+                "ipv6" : iocs.network_iocs.ipv6s.iter()
                 .map(|x|output_network_ioc(&x)).collect::<Vec<&str>>(),
-                "hexurl" : input.network_iocs.hexurls.iter()
+                "hexurl" : iocs.network_iocs.hexurls.iter()
                 .map(|x|output_network_ioc(&x)).collect::<Vec<&str>>()
             },
             "hash":{
-                "md5" :  input.hash_iocs.md5s.iter()
+                "md5" :  iocs.hash_iocs.md5s.iter()
                 .map(|x|output_hash_ioc(&x)).collect::<Vec<&str>>(),
-                "sha1" : input.hash_iocs.sha1s.iter()
+                "sha1" : iocs.hash_iocs.sha1s.iter()
                 .map(|x|output_hash_ioc(&x)).collect::<Vec<&str>>(),
-                "sha256" : input.hash_iocs.sha256s.iter()
+                "sha256" : iocs.hash_iocs.sha256s.iter()
                 .map(|x|output_hash_ioc(&x)).collect::<Vec<&str>>(),
-                "sha512" : input.hash_iocs.sha512s.iter()
+                "sha512" : iocs.hash_iocs.sha512s.iter()
                 .map(|x|output_hash_ioc(&x)).collect::<Vec<&str>>(),
-                "ssdeep" : input.hash_iocs.ssdeeps.iter()
+                "ssdeep" : iocs.hash_iocs.ssdeeps.iter()
                 .map(|x|output_hash_ioc(&x)).collect::<Vec<&str>>()
             },
             "file" : {
-                "doc" : input.file_iocs.docs.iter()
+                "doc" : iocs.file_iocs.docs.iter()
                 .map(|x|output_file_iocs(&x)).collect::<Vec<&str>>(),
-                "exe" : input.file_iocs.exes.iter()
+                "exe" : iocs.file_iocs.exes.iter()
                 .map(|x|output_file_iocs(&x)).collect::<Vec<&str>>(),
-                "flash" : input.file_iocs.flashs.iter()
+                "flash" : iocs.file_iocs.flashs.iter()
                 .map(|x|output_file_iocs(&x)).collect::<Vec<&str>>(),
-                "img" : input.file_iocs.imgs.iter()
+                "img" : iocs.file_iocs.imgs.iter()
                 .map(|x|output_file_iocs(&x)).collect::<Vec<&str>>(),
-                "mac" : input.file_iocs.macs.iter()
+                "mac" : iocs.file_iocs.macs.iter()
                 .map(|x|output_file_iocs(&x)).collect::<Vec<&str>>(),
-                "web" : input.file_iocs.webs.iter()
+                "web" : iocs.file_iocs.webs.iter()
                 .map(|x|output_file_iocs(&x)).collect::<Vec<&str>>(),
-                "zip" : input.file_iocs.zips.iter()
+                "zip" : iocs.file_iocs.zips.iter()
                 .map(|x|output_file_iocs(&x)).collect::<Vec<&str>>(),
             },
             "vulns": {
-                "cve" : input.cve_iocs.iter().map(|x|output_cve_ioc(x))
+                "cve" : iocs.cve_iocs.iter().map(|x|output_cve_ioc(x))
                 .collect::<Vec<&str>>()
             }
         })
